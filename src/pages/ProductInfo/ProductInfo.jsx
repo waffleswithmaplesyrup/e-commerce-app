@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import StarRating from "../components/StarRating";
-import Carousel from "../components/Carousel";
+// import Carousel from "../components/Carousel";
 
 function useFetchProduct(id) {
   const [product, setProduct] = useState({});
@@ -22,7 +22,6 @@ function useFetchProduct(id) {
         const data = await response.json();
         setStatus("success");
         setProduct(data);
-        console.log(data);
       } catch (error) {
         setStatus("error");
       }
@@ -39,8 +38,8 @@ function useFetchProduct(id) {
 
 
 export default function ProductInfo() {
-
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const {product, isLoading, isError}  = useFetchProduct(id);
 
@@ -52,17 +51,23 @@ export default function ProductInfo() {
     return <h2>Something went wrong...</h2>;
   }
 
+  const handleAdd = () => {
+    console.log(`add ${product.title} to cart`);
+
+    navigate("/cart");
+  };
+
   return <div>
-    product info page
-    {/* image carousel */}
-    <Carousel images={product.images} />
-    {/* <img src={product.images[0]} alt="" /> */}
+    <img src={product.thumbnail}  alt={product.id} />
+    {/* <Carousel images={product.images} /> */}
+    {product.images?.map(image => <img key={image} src={image} alt={image} />)}
     <h3>{product.title}</h3>
+    <p>price: ${product.price}</p>
     <StarRating score={product.rating} />
-    <p>${product.price}</p>
-    <p>{product.brand}</p>
-    <p>{product.description}</p>
-    {/* <p>{product.images}</p> */}
+    <p>brand: {product.brand}</p>
+    <p>Description: {product.description}</p>
+    <p>stocks left: {product.stock}</p>
+    <button onClick={handleAdd} >Add to Cart</button>
 
   </div>
 }

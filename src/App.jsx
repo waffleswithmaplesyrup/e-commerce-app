@@ -1,60 +1,35 @@
 import { Route, Routes } from "react-router-dom";
-import { DataContext } from "./Context/DataContext";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
 import LandingPage from "./pages/LandingPage/LandingPage";
 import ProductsPage from "./pages/ProductsPage/ProductsPage";
+import SearchPage from "./pages/SearchPage/SearchPage";
 import ProductInfo from "./pages/ProductInfo/ProductInfo";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 
 function App() {
-  const [data, setData] = useState(
-    { 
-      keyword: "", 
+  const [products, setProducts] = useState([]);
 
-      updateKeyword: function(newKeyword) {
-        setData({...data, keyword: newKeyword});
-      },
+  const BASE_URL = "https://dummyjson.com";
 
-      products: [],
+  // const BASE_URL = "http://localhost:3000";
 
-    }
-  );
-
-  // function useFetchProducts(keyword) {
-  
-    // const BASE_URL = "http://localhost:3000";
-    const BASE_URL = "https://dummyjson.com";
-  
-    const search_url = data.keyword === "" ? "" : `/search?q=${data.keyword}`;
-  
-    useEffect(() => {
-      const fetchProducts = async () => {
-          const response = await fetch(`${BASE_URL}/products${search_url}`);
-          if (!response.ok) {
-            throw new Error("Network response was not ok :(");
-          }
-          const payload = await response.json();
-          // setProducts(data.products);
-          console.log(payload.products);
-          
-          setData({...data, products: payload.products});
-
-      };
-      fetchProducts();
-    }, [search_url]);
+  const fetchProducts = async () => {
+    const request = await fetch(`${BASE_URL}/products`);
+      const data = await request.json();
+      // console.log(data);
+      setProducts(data.products);
+  };
 
   return (
     <div>
-    <DataContext.Provider value={data}>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path={"/products/search/"} element={<ProductsPage />} />
+        <Route path="/" element={<LandingPage fetchProducts={fetchProducts} />} />
+        <Route path="/products" element={<ProductsPage products={products} />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/products/:id" element={<ProductInfo />} />
         <Route path="/cart" element={<ShoppingCart />} />
       </Routes>
-    </DataContext.Provider>
-
     </div>
   )
 }
