@@ -55,7 +55,8 @@ export default function ProductInfo() {
   return <div>
     product info page
     {/* image carousel */}
-    {/* <Carousel images={product.images} /> */}
+    <Carousel images={product.images} />
+    {/* <img src={product.images[0]} alt="" /> */}
     <h3>{product.title}</h3>
     <StarRating score={product.rating} />
     <p>${product.price}</p>
