@@ -9,7 +9,6 @@ export default function PurchasingCard({ item }) {
   const [quantity, setQuantity] = useState(item.quantity);
 
   const handleChange = async (event) => {
-    console.log(event.target.value);
     setQuantity(event.target.value);
 
     const payload = {

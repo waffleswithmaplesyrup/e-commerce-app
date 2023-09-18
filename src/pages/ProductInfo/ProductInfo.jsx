@@ -51,8 +51,45 @@ export default function ProductInfo() {
     return <h2>Something went wrong...</h2>;
   }
 
-  const handleAdd = () => {
+  const handleAdd = async () => {
     console.log(`add ${product.title} to cart`);
+    const TOKEN =
+  "patjEsSqznCeKP4Tm.3498c9f837410cce65c273bfb3b6ea7b4203984e08ac1a3ed63de377edd64eaf";
+    const BASE_URL = "https://api.airtable.com/v0/app7Fu8VNb6BUxYbM";
+
+    // const payload = {
+    //   fields:{
+    //     title: product.title,
+    //     description: product.description,
+    //     price: product.price,
+    //     rating: product.rating,
+    //     quantity: product.quantity,
+    //     stocks: product.stocks,
+    //     thumbnail: product.thumbnail
+    //   }
+    // };
+
+    const payload = {
+      "fields": {
+        "title": `${product.title}`,
+        "description": `${product.description}`,
+        "price": `${product.price}`,
+        "rating": `${product.rating}`,
+        "quantity": `1`,
+        "stocks": `${product.stock}`,
+        "thumbnail": `${product.thumbnail}`
+      }
+    };
+
+    const response = await fetch(`${BASE_URL}/cart`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TOKEN}`,
+      },
+      body: JSON.stringify(payload),
+    });
+    await response.json();
 
     navigate("/cart");
   };

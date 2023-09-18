@@ -14,6 +14,7 @@ export default function ShoppingCart() {
   useEffect(() => {
     const fetchCart = async () => {
       const response = await fetch(`${BASE_URL}/cart`, {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${TOKEN}`,
@@ -40,7 +41,10 @@ export default function ShoppingCart() {
 }
 
 function addTotal(items) {
-  const total = items?.reduce( (prev, curr) => parseInt(prev.price)*parseInt(prev.quantity) + parseInt(curr.price)*parseInt(curr.quantity) );
+  let total = 0;
+  items.forEach( item => {
+    total += parseInt(item.price)*parseInt(item.quantity)
+  });
 
   return total;
 }
