@@ -37,6 +37,7 @@ export default function PurchasingCard({ item }) {
   return <div className="purchasing">
   <img src={item.thumbnail} alt={item.id} />
   <h3>{item.title}</h3>
+  <p>${item.price}</p>
   <StarRating score={item.rating} />
   <p>quantity:</p>
   <input type="number" min="1" max={item.stocks} value={quantity} onChange={handleChange}/>

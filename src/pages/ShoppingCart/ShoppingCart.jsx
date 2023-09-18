@@ -8,6 +8,8 @@ const BASE_URL = "https://api.airtable.com/v0/app7Fu8VNb6BUxYbM";
 export default function ShoppingCart() {
 
   const [cartItems, setCartItems] = useState([]);
+  const [total, setTotal] = useState();
+  const [refresh, setRefresh] = useState(0);
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -24,14 +26,21 @@ export default function ShoppingCart() {
       }));
       setCartItems(cartData);
       // console.log(cartData);
-
+      setTotal(addTotal(cartData));
+      setRefresh(refresh + 1);
     };
     fetchCart();
-  }, []);
+  }, [refresh]);
 
   return <>
   {/* render stored data from air table */}
   {cartItems?.map(item => <PurchasingCard key={item.id} item={item} />)}
-  
+  <p>total: ${total}</p>
   </>
+}
+
+function addTotal(items) {
+  const total = items?.reduce( (prev, curr) => parseInt(prev.price)*parseInt(prev.quantity) + parseInt(curr.price)*parseInt(curr.quantity) );
+
+  return total;
 }
