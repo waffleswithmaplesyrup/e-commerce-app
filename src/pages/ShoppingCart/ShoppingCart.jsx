@@ -28,9 +28,13 @@ export default function ShoppingCart() {
     fetchCart();
   }, []);
 
+  const refetchDataExcept = (id) => {
+    setCartItems(cartItems.filter( item => item.id !== id));
+  };
+
   return <>
   {/* render stored data from air table */}
-  {cartItems?.map(item => <PendingCard key={item.id} item={item} />)}
+  {cartItems?.map(item => <PendingCard key={item.id} item={item} refetchDataExcept={refetchDataExcept} />)}
   </>
 }
 
