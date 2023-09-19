@@ -3,6 +3,7 @@ import ProductCard from "../../components/ProductCard";
 import NavigateToCart from "../../components/NavigateToCart";
 import Categories from "../../components/Categories";
 import SearchBar from "../../components/SearchBar";
+import Sort from "../../components/Sort";
 
 export default function SearchPage() {
   const [products, setProducts] = useState([]);
@@ -21,10 +22,13 @@ export default function SearchPage() {
   };
 
   const filterByCategory = async (category) => {
-
     const response = await fetch(`${BASE_URL}/products/category/${category}`);
     const data = await response.json();
     setProducts(data.products);
+  };
+
+  const sortByPrice = (sortedProducts) => {
+    setProducts(sortedProducts);
   };
 
   return <>
@@ -33,8 +37,11 @@ export default function SearchPage() {
 
     <Categories filterByCategory={filterByCategory} />
 
+    <Sort products={products} sortByPrice={sortByPrice} />
+
     <NavigateToCart />
     { products?.map(product => <ProductCard key={product.id} product={product}/>) }
     <p>{result}</p>
   </>
 }
+

@@ -20,8 +20,8 @@ export default function Categories({ filterByCategory }) {
   };
 
   return <>
-    <p>Categories:</p>
     <select onChange={handleChange} name="categories" >
+      <option selected disabled >Categories</option>
       {categories?.map(category => <option key={category} value={category} >{category}</option>)}
     </select>
   </>
