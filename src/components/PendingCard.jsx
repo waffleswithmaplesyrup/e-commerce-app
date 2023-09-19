@@ -1,11 +1,12 @@
 import { useState } from "react";
 import StarRating from "./StarRating";
+import { Link } from "react-router-dom";
 
 const TOKEN =
   "patjEsSqznCeKP4Tm.3498c9f837410cce65c273bfb3b6ea7b4203984e08ac1a3ed63de377edd64eaf";
 const BASE_URL = "https://api.airtable.com/v0/app7Fu8VNb6BUxYbM";
 
-export default function PendingCard({ item, refetchDataExcept }) {
+export default function PendingCard({ item, refetchDataExceptDeleted }) {
   const [quantity, setQuantity] = useState(item.quantity);
 
   const handleChange = async (event) => {
@@ -47,17 +48,17 @@ export default function PendingCard({ item, refetchDataExcept }) {
     });
     await response.json();
 
-    refetchDataExcept(item.id);
+    refetchDataExceptDeleted(item.id);
   };
 
   return <div className="purchasing">
-  <img src={item.thumbnail} alt={item.id} />
-  <h3>{item.title}</h3>
-  <p>${item.price}</p>
-  <StarRating score={item.rating} />
-  <p>quantity:</p>
-  <input type="number" min="1" max={item.stocks} value={quantity} onChange={handleChange}/>
-  <p>stock left: {item.stocks-quantity}</p>
-  <button onClick={handleDelete}>remove from cart</button>
+    <Link to={`/products/${item.productid}`}><img src={item.thumbnail} alt={item.id} /></Link>
+    <h3>{item.title}</h3>
+    <p>${item.price}</p>
+    <StarRating score={item.rating} />
+    <p>quantity:</p>
+    <input type="number" min="1" max={item.stocks} value={quantity} onChange={handleChange}/>
+    <p>stock left: {item.stocks-quantity}</p>
+    <button onClick={handleDelete}>remove from cart</button>
   </div>
 }

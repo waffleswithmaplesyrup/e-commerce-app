@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import NavigateToCart from "../components/NavigateToCart";
+import NavigateToCart from "../../components/NavigateToCart";
 
 export default function LandingPage() {
 

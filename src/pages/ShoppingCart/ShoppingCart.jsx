@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PendingCard from "../components/PendingCard";
+import PendingCard from "../../components/PendingCard";
 
 const TOKEN =
   "patjEsSqznCeKP4Tm.3498c9f837410cce65c273bfb3b6ea7b4203984e08ac1a3ed63de377edd64eaf";
@@ -28,13 +28,13 @@ export default function ShoppingCart() {
     fetchCart();
   }, []);
 
-  const refetchDataExcept = (id) => {
+  const refetchDataExceptDeleted = (id) => {
     setCartItems(cartItems.filter( item => item.id !== id));
   };
 
   return <>
   {/* render stored data from air table */}
-  {cartItems?.map(item => <PendingCard key={item.id} item={item} refetchDataExcept={refetchDataExcept} />)}
+  {cartItems?.map(item => <PendingCard key={item.id} item={item} refetchDataExceptDeleted={refetchDataExceptDeleted} />)}
   </>
 }
 

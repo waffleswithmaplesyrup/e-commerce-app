@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import NavigateToCart from "../components/NavigateToCart";
-import ProductCard from "../components/ProductCard";
+import NavigateToCart from "../../components/NavigateToCart";
+import ProductCard from "../../components/ProductCard";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
