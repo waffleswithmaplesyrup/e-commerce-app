@@ -59,7 +59,7 @@ export default function ProductInfo() {
 
     const payload = {
       "fields": {
-        "title": `${product.title}`,
+        "title": product.title,
         "description": `${product.description}`,
         "price": `${product.price}`,
         "rating": `${product.rating}`,

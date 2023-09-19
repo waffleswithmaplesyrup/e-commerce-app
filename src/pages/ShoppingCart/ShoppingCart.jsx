@@ -9,7 +9,6 @@ export default function ShoppingCart() {
 
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState();
-  const [refresh, setRefresh] = useState(0);
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -27,10 +26,9 @@ export default function ShoppingCart() {
       }));
       setCartItems(cartData);
       setTotal(addTotal(cartData));
-      setRefresh(refresh + 1);
     };
     fetchCart();
-  }, [refresh]);
+  }, []);
 
   return <>
   {/* render stored data from air table */}

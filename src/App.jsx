@@ -8,6 +8,8 @@ import ProductInfo from "./pages/ProductInfo/ProductInfo";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 
 function App() {
+
+  //* move this whole code to products page
   const [products, setProducts] = useState([]);
 
   const BASE_URL = "https://dummyjson.com";
@@ -20,6 +22,8 @@ function App() {
       // console.log(data);
       setProducts(data.products);
   };
+  //* move this whole code to products page
+
 
   return (
     <div>

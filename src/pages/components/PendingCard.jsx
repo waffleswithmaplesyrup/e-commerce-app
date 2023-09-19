@@ -16,7 +16,7 @@ export default function PendingCard({ item }) {
         quantity: event.target.value,
       }
     };
-
+    console.log("id", item.id);
     const response = await fetch(`${BASE_URL}/cart/${item.id}`, {
       method: "PATCH",
       headers: {
@@ -29,8 +29,24 @@ export default function PendingCard({ item }) {
 
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
     console.log(`remove ${item.title} from cart`);
+    
+    const decision = window.confirm("Are you sure?");
+
+    if (!decision) {
+      return;
+    }
+
+    const response = await fetch(`${BASE_URL}}/cart/${item.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TOKEN}`,
+      },
+      body: "false"
+    });
+    await response.json();
   };
 
   return <div className="purchasing">
