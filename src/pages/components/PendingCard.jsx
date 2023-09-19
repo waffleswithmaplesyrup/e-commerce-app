@@ -13,7 +13,7 @@ export default function PendingCard({ item }) {
 
     const payload = {
       fields:{
-        quantity: event.target.value,
+        "quantity": event.target.value,
       }
     };
     console.log("id", item.id);
@@ -37,14 +37,13 @@ export default function PendingCard({ item }) {
     if (!decision) {
       return;
     }
-
-    const response = await fetch(`${BASE_URL}}/cart/${item.id}`, {
+    
+    const response = await fetch(`${BASE_URL}/cart/${item.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${TOKEN}`,
       },
-      body: "false"
     });
     await response.json();
   };

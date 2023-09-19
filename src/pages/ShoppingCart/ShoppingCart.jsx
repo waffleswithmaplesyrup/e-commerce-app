@@ -8,7 +8,6 @@ const BASE_URL = "https://api.airtable.com/v0/app7Fu8VNb6BUxYbM";
 export default function ShoppingCart() {
 
   const [cartItems, setCartItems] = useState([]);
-  const [total, setTotal] = useState();
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -25,7 +24,6 @@ export default function ShoppingCart() {
         id: data.id,
       }));
       setCartItems(cartData);
-      setTotal(addTotal(cartData));
     };
     fetchCart();
   }, []);
@@ -33,15 +31,6 @@ export default function ShoppingCart() {
   return <>
   {/* render stored data from air table */}
   {cartItems?.map(item => <PendingCard key={item.id} item={item} />)}
-  <p>total: ${total}</p>
   </>
 }
 
-function addTotal(items) {
-  let total = 0;
-  items.forEach( item => {
-    total += parseInt(item.price)*parseInt(item.quantity)
-  });
-
-  return total;
-}
