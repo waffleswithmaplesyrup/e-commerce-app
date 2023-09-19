@@ -57,18 +57,6 @@ export default function ProductInfo() {
   "patjEsSqznCeKP4Tm.3498c9f837410cce65c273bfb3b6ea7b4203984e08ac1a3ed63de377edd64eaf";
     const BASE_URL = "https://api.airtable.com/v0/app7Fu8VNb6BUxYbM";
 
-    // const payload = {
-    //   fields:{
-    //     title: product.title,
-    //     description: product.description,
-    //     price: product.price,
-    //     rating: product.rating,
-    //     quantity: product.quantity,
-    //     stocks: product.stocks,
-    //     thumbnail: product.thumbnail
-    //   }
-    // };
-
     const payload = {
       "fields": {
         "title": `${product.title}`,
@@ -99,7 +87,7 @@ export default function ProductInfo() {
     {/* <Carousel images={product.images} /> */}
     {product.images?.map(image => <img key={image} src={image} alt={image} />)}
     <h3>{product.title}</h3>
-    <p>price: ${product.price}</p>
+    <h4>price: ${product.price}</h4>
     <StarRating score={product.rating} />
     <p>brand: {product.brand}</p>
     <p>Description: {product.description}</p>

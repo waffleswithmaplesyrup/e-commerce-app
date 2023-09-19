@@ -5,7 +5,7 @@ const TOKEN =
   "patjEsSqznCeKP4Tm.3498c9f837410cce65c273bfb3b6ea7b4203984e08ac1a3ed63de377edd64eaf";
 const BASE_URL = "https://api.airtable.com/v0/app7Fu8VNb6BUxYbM";
 
-export default function PurchasingCard({ item }) {
+export default function PendingCard({ item }) {
   const [quantity, setQuantity] = useState(item.quantity);
 
   const handleChange = async (event) => {

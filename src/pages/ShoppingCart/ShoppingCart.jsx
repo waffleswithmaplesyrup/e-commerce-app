@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PurchasingCard from "../components/PurchasingCard";
+import PendingCard from "../components/PendingCard";
 
 const TOKEN =
   "patjEsSqznCeKP4Tm.3498c9f837410cce65c273bfb3b6ea7b4203984e08ac1a3ed63de377edd64eaf";
@@ -26,7 +26,6 @@ export default function ShoppingCart() {
         id: data.id,
       }));
       setCartItems(cartData);
-      // console.log(cartData);
       setTotal(addTotal(cartData));
       setRefresh(refresh + 1);
     };
@@ -35,7 +34,7 @@ export default function ShoppingCart() {
 
   return <>
   {/* render stored data from air table */}
-  {cartItems?.map(item => <PurchasingCard key={item.id} item={item} />)}
+  {cartItems?.map(item => <PendingCard key={item.id} item={item} />)}
   <p>total: ${total}</p>
   </>
 }
