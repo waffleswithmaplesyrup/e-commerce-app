@@ -17,7 +17,6 @@ Welcome to Lazapee, your one-stop destination for online shopping! I mixed two b
 - [Future Developments](#future-developments)
 - [Summary](#summary)
 - [References](#references)
-- [App Screenshots](#app-screenshots)
 
 <br>
 
@@ -25,7 +24,7 @@ Welcome to Lazapee, your one-stop destination for online shopping! I mixed two b
 
 Lazapee is an e-commerce platform built to provide a user-friendly and efficient shopping experience. This app offers a wide selection of products across various categories, from electronics to fashion, and more. It's designed to make online shopping convenient and enjoyable for users of all backgrounds.
 
-<img src="URL_TO_APP_IMAGE" height="400">
+<img src="https://raw.githubusercontent.com/waffleswithmaplesyrup/e-commerce-app/main/public/products.png" height="400">
 
 As part of a software engineering project, Lazapee was developed using vite react. My goal is to create a reliable and user-centric e-commerce platform that caters to the diverse needs of customers.
 
@@ -64,6 +63,12 @@ Shopping on Lazapee is easy and convenient. Here's how to get started:
 3. **Add to Cart:** When you find a product you love, click "Add to Cart" to save it for later.
 4. **Checkout:** Review your items in the shopping cart and complete your purchase.
 
+<img src="https://raw.githubusercontent.com/waffleswithmaplesyrup/e-commerce-app/main/public/login.png" height="400">
+
+<img src="https://raw.githubusercontent.com/waffleswithmaplesyrup/e-commerce-app/main/public/product-info.png" height="400">
+
+<img src="https://raw.githubusercontent.com/waffleswithmaplesyrup/e-commerce-app/main/public/cart-page.png" height="400">
+
 <br>
 
 ## Design Process
@@ -76,7 +81,7 @@ I used a [dummy json products API](https://dummyjson.com/docs/products) to fetch
 
 [Airtable](https://airtable.com/app7Fu8VNb6BUxYbM/shrLZKoiHXa50KsZ3/tblgaXfFbIsHV63Hq) was used to store data of the products added into shopping cart. This is where manipulation of the data such as PATCHing, POSTing, and DELETEing was done.
 
-<img src="URL_TO_DESIGN_IMAGE">
+<img src="https://raw.githubusercontent.com/waffleswithmaplesyrup/e-commerce-app/main/public/trello.png">
 
 <br>
 
@@ -124,11 +129,3 @@ Lazapee is the result of hard work and dedication to creating a full-stack e-com
 
 - [Lazada](https://www.lazada.sg/)
 - [Shopee](https://shopee.sg/)
-
-<br>
-
-## App Screenshots
-
-![Screenshot 1](URL_TO_SCREENSHOT_1)
-![Screenshot 2](URL_TO_SCREENSHOT_2)
-![Screenshot 3](URL_TO_SCREENSHOT_3)
