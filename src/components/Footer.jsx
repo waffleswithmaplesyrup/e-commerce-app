@@ -5,7 +5,7 @@ export default function Footer() {
 <footer className="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
   <div className="col mb-3 footer-logo">
     <a href="/" className="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-      <img src="../../public/images/logo-2.png" height="100px" />
+      <img src="../../public/logo-2.png" height="100px" />
     </a>
     <p className="text-body-secondary">© 2023</p>
   </div>
