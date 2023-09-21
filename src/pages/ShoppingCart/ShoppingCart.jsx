@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PendingCard from "../../components/PendingCard";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 const TOKEN =
   "patjEsSqznCeKP4Tm.3498c9f837410cce65c273bfb3b6ea7b4203984e08ac1a3ed63de377edd64eaf";
@@ -74,6 +75,7 @@ export default function ShoppingCart() {
     <div className="check-out">
       Total:<span>$ {total}</span> <button>Check Out</button>
     </div>
+    <Footer />
   </>
 }
 

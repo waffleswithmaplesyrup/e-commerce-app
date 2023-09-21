@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import StarRating from "../../components/StarRating";
 import Navbar from "../../components/Navbar";
 import Carousel from "../../components/Carousel";
+import Footer from "../../components/Footer";
 
 function useFetchProduct(id) {
   const [product, setProduct] = useState({});
@@ -90,21 +91,22 @@ export default function ProductInfo() {
   return <>
     <Navbar page={product.title} />
     <p></p>
-    <Carousel images={product.images} />
-    <div className="info-container">
-      {/* <img src={product.thumbnail}  alt={product.id} />
-      {product.images?.map(image => <img key={image} src={image} alt={image} />)} */}
-      <div>
-        <p className="title">{product.title}</p>
-        <p className="price">price: ${product.price}</p>
+    <div className="product-info">
+      <Carousel images={product.images} />
+      <div className="info-container">
         <div>
-          <StarRating score={product.rating} /> <span>{product.rating}</span>
+          <p className="title">{product.title}</p>
+          <p className="price">price: ${product.price}</p>
+          <div>
+            <StarRating score={product.rating} /> <span>{product.rating}</span>
+          </div>
+          <p>brand: {product.brand}</p>
+          <p>Description: {product.description}</p>
+          <p>stocks left: {product.stock}</p>
         </div>
-        <p>brand: {product.brand}</p>
-        <p>Description: {product.description}</p>
-        <p>stocks left: {product.stock}</p>
+        <button onClick={handleAdd} >Add to Cart</button>
       </div>
-      <button onClick={handleAdd} >Add to Cart</button>
     </div>
+    <Footer />
   </>
 }

@@ -1,7 +1,16 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const navigate = useNavigate();
+
+  const [hidden, setHidden] = useState(true);
+
+  const toggleHide = (event) => {
+    event.preventDefault();
+
+    setHidden(!hidden);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -10,16 +19,16 @@ export default function LoginForm() {
   };
 
   return <>
-  <form className="login" onSubmit={handleSubmit}>
+  <form className="login">
       Log In
       <div className="login-info">
         <input className="email" type="text" placeholder="Phone number / Username / Email" autoComplete="on" name="loginKey" maxLength="128" aria-invalid="false" />
       </div>
       <div className="login-info">
-        <input className="password" type="password" placeholder="Password" autoComplete="current-password" name="password" maxLength="16" aria-invalid="false" />
-        <button className="password-eye"><img src="../../../public/images/hide.png" alt="hidden" /></button>
+        <input className="password" type={hidden === true ? "password" : "text"} placeholder="Password" autoComplete="current-password" name="password" maxLength="16" aria-invalid="false" />
+        <button onClick={toggleHide} className="password-eye"><img src={`../../../public/images/${hidden === true ? "hide" : "view"}.png`} alt="hidden" /></button>
       </div>
-      <button className="login-button">log in</button>
+      <button className="login-button" onClick={handleSubmit}>log in</button>
       <div className="forgot-password">
         <a href="#">Forgot Password</a>
         <a href="#">Log In with Phone Number</a>
@@ -28,9 +37,9 @@ export default function LoginForm() {
         <div></div><span>or</span><div></div>
       </div>
       <div className="alt-login">
-        <button>Facebook</button>
+        <button><img src="../../../public/images/facebook.png" alt="facebook" />Facebook</button>
         <div></div>
-        <button>Google</button>
+        <button><img src="../../../public/images/google.png" alt="google" />Google</button>
       </div>
       <div className="sign-up">New to Lazapee? <a href="#">Sign Up</a></div>
     </form>
