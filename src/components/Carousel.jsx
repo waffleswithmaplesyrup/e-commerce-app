@@ -1,7 +1,5 @@
 export default function Carousel({ images }) {
 
-  console.log(images);
-
   return <div className="carousel-container">
   <div id="carouselExampleIndicators" className="carousel slide">
   <div className="carousel-indicators">
