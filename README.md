@@ -24,7 +24,7 @@ Welcome to Lazapee, your one-stop destination for online shopping! I mixed two b
 
 Lazapee is an e-commerce platform built to provide a user-friendly and efficient shopping experience. This app offers a wide selection of products across various categories, from electronics to fashion, and more. It's designed to make online shopping convenient and enjoyable for users of all backgrounds.
 
-<img src="https://raw.githubusercontent.com/waffleswithmaplesyrup/e-commerce-app/main/public/products.png" height="400">
+<img src="https://raw.githubusercontent.com/waffleswithmaplesyrup/e-commerce-app/main/public/products.png">
 
 As part of a software engineering project, Lazapee was developed using vite react. My goal is to create a reliable and user-centric e-commerce platform that caters to the diverse needs of customers.
 
@@ -63,11 +63,11 @@ Shopping on Lazapee is easy and convenient. Here's how to get started:
 3. **Add to Cart:** When you find a product you love, click "Add to Cart" to save it for later.
 4. **Checkout:** Review your items in the shopping cart and complete your purchase.
 
-<img src="https://raw.githubusercontent.com/waffleswithmaplesyrup/e-commerce-app/main/public/login.png" height="400">
+<img src="https://raw.githubusercontent.com/waffleswithmaplesyrup/e-commerce-app/main/public/login.png">
 
-<img src="https://raw.githubusercontent.com/waffleswithmaplesyrup/e-commerce-app/main/public/product-info.png" height="400">
+<img src="https://raw.githubusercontent.com/waffleswithmaplesyrup/e-commerce-app/main/public/product-info.png">
 
-<img src="https://raw.githubusercontent.com/waffleswithmaplesyrup/e-commerce-app/main/public/cart-page.png" height="400">
+<img src="https://raw.githubusercontent.com/waffleswithmaplesyrup/e-commerce-app/main/public/cart-page.png">
 
 <br>
 
