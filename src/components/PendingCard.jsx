@@ -1,5 +1,4 @@
 import { useState } from "react";
-import StarRating from "./StarRating";
 import { Link } from "react-router-dom";
 
 const TOKEN =
@@ -9,12 +8,24 @@ const BASE_URL = "https://api.airtable.com/v0/app7Fu8VNb6BUxYbM";
 export default function PendingCard({ item, refetchDataExceptDeleted }) {
   const [quantity, setQuantity] = useState(item.quantity);
 
-  const handleChange = async (event) => {
-    setQuantity(event.target.value);
+  const handleMinus = () => {
+    if (quantity > 1) {
+      setQuantity(parseInt(quantity) - 1);
+      updateQuantity(parseInt(quantity) - 1);
+    }
+  };
 
+  const handlePlus = () => {
+    if (quantity < item.stocks) {
+      setQuantity(parseInt(quantity) + 1);
+      updateQuantity(parseInt(quantity) + 1);
+    }
+  };
+
+  const updateQuantity = async (quantity) => {
     const payload = {
       fields:{
-        "quantity": event.target.value,
+        "quantity": `${quantity}`,
       }
     };
     console.log("id", item.id);
@@ -27,7 +38,6 @@ export default function PendingCard({ item, refetchDataExceptDeleted }) {
       body: JSON.stringify(payload)
     });
     await response.json();
-
   };
 
   const handleDelete = async () => {
@@ -51,14 +61,26 @@ export default function PendingCard({ item, refetchDataExceptDeleted }) {
     refetchDataExceptDeleted(item.id);
   };
 
-  return <div className="purchasing">
-    <Link to={`/products/${item.productid}`}><img src={item.thumbnail} alt={item.id} /></Link>
-    <h3>{item.title}</h3>
-    <p>${item.price}</p>
-    <StarRating score={item.rating} />
-    <p>quantity:</p>
-    <input type="number" min="1" max={item.stocks} value={quantity} onChange={handleChange}/>
-    <p>stock left: {item.stocks-quantity}</p>
-    <button onClick={handleDelete}>remove from cart</button>
+  
+
+  return <div className="cart-card">
+    <div>
+    <Link to={`/products/${item.productid}`}><img className="cart-img" src={item.thumbnail} alt={item.id} /></Link>
+    <div>
+      <p className="title" >{item.title}</p>
+      <p className="price">${item.price}</p>
+
+      <div className="quantity">
+        <button onClick={handleMinus} style={{borderRight: "1px solid rgba(0,0,0,.14)"}} >-</button>
+        <input type="text" min="1" max={item.stocks} value={quantity} />
+        <button onClick={handlePlus} style={{borderLeft: "1px solid rgba(0,0,0,.14)"}}>+</button>
+      </div>
+
+      <p>stock left: {item.stocks-quantity}</p>
+    </div>
+    </div>
+    <div>
+      <button className="delete-button" onClick={handleDelete}>remove from cart</button>
+    </div>
   </div>
 }

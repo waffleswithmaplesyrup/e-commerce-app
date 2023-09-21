@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom";
-import NavigateToCart from "../../components/NavigateToCart";
+import Navbar from "../../components/Navbar";
+import LoginForm from "../../components/LoginForm";
+import Footer from "../../components/Footer";
 
 export default function LandingPage() {
+  
 
   return <div className="landing-page">
-    <h1>Lazapee</h1>
-    <p>shop now</p>
-    <Link to="/search" >Search Products</Link>
-    <Link to="/products" >Browse Products</Link>
-    <NavigateToCart />
+
+    <Navbar page="Log In" />
+
+    <LoginForm />
+
+    <Footer />
+
   </div>
 }

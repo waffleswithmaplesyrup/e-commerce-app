@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function NavigateToCart() {
   return <>
-  <Link to="/cart"><button>View Cart</button></Link>
+  <Link to="/cart">
+  <img src="../../public/images/shopping-cart.png" alt="cart-icon" /></Link>
   </>;
 }

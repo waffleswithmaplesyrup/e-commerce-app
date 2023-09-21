@@ -19,8 +19,12 @@ export default function Categories({ filterByCategory }) {
     filterByCategory(event.target.value);
   };
 
+  const style = {
+    borderRight: "1px solid rgba(0,0,0,.14)"
+  };
+
   return <>
-    <select onChange={handleChange} name="categories" >
+    <select style={style}  onChange={handleChange} name="categories" >
       <option selected disabled >Categories</option>
       {categories?.map(category => <option key={category} value={category} >{category}</option>)}
     </select>
