@@ -50,7 +50,7 @@ As part of a software engineering project, Lazapee was developed using vite reac
 
 ## Deployment
 
-Lazapee is deployed and hosted on [Vercel](https://vercel.com/). Visit website to start shopping: [Lazapee](https://e-commerce-app-five-eta.vercel.app/).
+Lazapee is deployed and hosted on [Vercel](https://vercel.com/). Visit website to start shopping: [Lazapee](https://lazapee.vercel.app/).
 
 <br>
 
