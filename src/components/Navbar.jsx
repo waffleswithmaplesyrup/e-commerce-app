@@ -6,7 +6,7 @@ export default function Navbar({page}) {
   <nav className="navbar">
       <div className="logo">
         <a href={ (page === "Log In") ? "/" : "/products"} >
-          <img src="../../../public/images/logo-1.png" />
+          <img src="../../public/images/logo-1.png" />
           Lazapee
         </a>
         <span>{page}</span>
